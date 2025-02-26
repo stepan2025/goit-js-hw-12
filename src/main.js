@@ -25,9 +25,9 @@ form.addEventListener('submit', async event => {
     return;
   }
 
-  page = 1; // Скидаємо сторінку при новому запиті
+  page = 1;
   gallery.innerHTML = '';
-  loadMoreBtn.style.display = 'none'; // Ховаємо кнопку перед новим запитом
+  loadMoreBtn.style.display = 'none';
   loader.style.display = 'block';
 
   try {
@@ -66,8 +66,6 @@ loadMoreBtn.addEventListener('click', async () => {
     const { images } = await fetchImages(query, page);
     renderGallery(images, true);
     loader.style.display = 'none';
-
-    // Прокрутка сторінки вниз після завантаження нових зображень
     const { height } = gallery.firstElementChild.getBoundingClientRect();
     window.scrollBy({ top: height * 2, behavior: 'smooth' });
 
